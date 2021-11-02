@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include "NumClass.h"
 
 int len(int n){ //returns number of digits in given number
     int ans = 0;
@@ -10,6 +11,8 @@ int len(int n){ //returns number of digits in given number
     return ans;
 }
 
+
+//Returns whether a number is an Armstrong number or not
 int isArmstrong (int n){
     int x = len(n);
     int y = n;
@@ -21,6 +24,7 @@ int isArmstrong (int n){
     return ans == n;
   }
 
+//Returns whether a number is a Palindrome number or not
 int isPalindrome (int n)
   {
     int a[len (n)];
@@ -32,10 +36,8 @@ int isPalindrome (int n)
     for (int i = 0 ; i < len (n)/2; i++){
 	if (a[i] != a[len (n) - i-1])
 	  {
-	    return 0;
+	    return 0; //return false
 	  }
       }
-    return 1;
+    return 1; //return true
   }
-
-

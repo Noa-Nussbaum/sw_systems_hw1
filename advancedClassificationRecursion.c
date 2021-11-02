@@ -1,16 +1,6 @@
-
+#include "NumClass.h"
 #include <stdio.h>
 #include <math.h>
-
-//returns number of digits in given number
-int len(int n){ 
-    int ans = 0;
-    while(n>0){
-        ans = ans +1;
-        n=(int)n/10;
-    }
-    return ans;
-}
 
 // returns the number in the i location in n
 int pos(int n, int i){
@@ -19,6 +9,17 @@ int pos(int n, int i){
     r = r % 10;
     return r;
 }
+
+//returns number of digits in given number
+int len(int n){ 
+    int ans = 0;
+    while(n>0){
+        ans = ans +1;
+        n=(n-n%10)/10;
+    }
+    return ans;
+}
+
 
 // returns the sum of the digits in the power of the length of n
 int recursiveSum(int n, int x){
@@ -38,7 +39,7 @@ int isArmstrong(int n){
 
 // returns whether a number is a palindrome or not
 int isPalindrome(int n){
-    if(n<10){
+    if(n<10){ //If we've reached the center of the number
         return 1;
     }
     else{
