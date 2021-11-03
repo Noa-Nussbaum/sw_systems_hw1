@@ -7,17 +7,21 @@ FLAGS= -Wall -g
 
 all: libclassloops.a libclassrec.a libclassrec.so libclassloops.so mains maindloop maindrec
 mains: main.o libclassrec.a
-	$(CC) $(FLAGS) -o mains main.o libclassrec.a
+	$(CC) $(FLAGS) -o mains main.o libclassrec.a -lm
 maindloop: main.o libclassloops.so
-	$(CC) $(FLAGS) -o maindloop main.o ./libclassloops.so
+	$(CC) $(FLAGS) -o maindloop main.o ./libclassloops.so -lm
 maindrec: main.o libclassrec.so
-	$(CC) $(FLAGS) -o maindrec main.o ./libclassrec.so
+	$(CC) $(FLAGS) -o maindrec main.o ./libclassrec.so -lm
+loops:
 libclassloops.a: advancedClassificationLoop.o basicClassification.o
 	$(AR) -rcs libclassloops.a advancedClassificationLoop.o basicClassification.o
+recursives:
 libclassrec.a: advancedClassificationRecursion.o basicClassification.o
 	$(AR) -rcs libclassrec.a  advancedClassificationRecursion.o basicClassification.o
+recursived:
 libclassrec.so: advancedClassificationRecursion.o basicClassification.o
 	$(CC) -shared -o libclassrec.so advancedClassificationRecursion.o basicClassification.o
+loopd:
 libclassloops.so: advancedClassificationLoop.o basicClassification.o
 	$(CC) -shared -o libclassloops.so advancedClassificationLoop.o basicClassification.o
 
