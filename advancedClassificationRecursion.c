@@ -21,38 +21,54 @@ int len(int n){
 }
 
 
-// returns the sum of the digits in the power of the length of n
-int recursiveSum(int n, int x){
-     if(n>0){
-    return (pow(n%10,x) + recursiveSum(n/10,x)-1);
-     }
+
+
+int arm(int num, int sum, int n){
+    if(num<10){
+        return sum + pow(num,n);
+    }
+    else{
+        sum = sum + (pow(num%10,n));
+        num = num/10;
+        return arm(num, sum, n);
+    }
 }
 
-// returns whether a number is an armstrong number or not
 int isArmstrong(int n){
     int x = len(n);
-    if(recursiveSum(n,x)==n){
-        return 1;
-    }
-    return 0;
-}
-
-
-// returns whether a number is a palindrome or not
-int isPalindrome(int n){
-    if(n<10){ //If we've reached the center of the number
+    int sum = arm(n, 0, x);
+    if(sum ==n){
         return 1;
     }
     else{
-        if(pos(n,0)!=pos(n,len(n)-1)){
-            return 0;
-        }
-        else{ 
-            int x= (int)(n-(pos(n,0)*pow(10,len(n)-1)));
-            x = x - n%10;
-        return isPalindrome(x/10);
-        }
+    return 0;
     }
 }
 
-int main(){}
+
+int reverse(int n){
+    int ans = 0;
+    int left;
+    while(n!=0){
+        left = n%10;
+        ans = ans * 10 + left;
+        n = n/10;
+    }
+    return ans;
+}
+
+int Pal(int x, int n){
+    if(x%10!=n%10){
+        return 0;
+    }
+    if(x==0 && n==0){
+        return 1;
+    }
+    return Pal(x/10,n/10);
+}
+
+int isPalindrome(int n){
+    int x = reverse(n);
+    return Pal(n, x);
+}
+

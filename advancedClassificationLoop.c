@@ -41,5 +41,3 @@ int isPalindrome (int n)
       }
     return 1; //return true
   }
-
-  int main(){}

@@ -15,11 +15,10 @@ int isPrime(int n){
 }
 
 int Factorial(int n){
-    int ans = 1;
-    while(n!=1){
-        ans = ans*n;
-        n = n-1;
-    }
+   int ans = n;
+   for(int i=2; i<n; i++){
+       ans = ans *i;
+   }
     return ans;
 }
 
@@ -34,5 +33,3 @@ int isStrong(int n){
     }
     return n==ans;
 }
-
-int main(){}
