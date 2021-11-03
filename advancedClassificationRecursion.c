@@ -23,8 +23,9 @@ int len(int n){
 
 // returns the sum of the digits in the power of the length of n
 int recursiveSum(int n, int x){
-     if(n>0)
+     if(n>0){
     return (pow(n%10,x) + recursiveSum(n/10,x)-1);
+     }
 }
 
 // returns whether a number is an armstrong number or not
@@ -53,3 +54,5 @@ int isPalindrome(int n){
         }
     }
 }
+
+int main(){}
